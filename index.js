@@ -9,7 +9,7 @@ const rl = readline.createInterface({
 function DownloadY(URL, TITLE, Extension) {
   console.log("Downloading...")
   ytdl(URL, {
-    format: Extension
+    format: Extension,
   }).pipe(fs.createWriteStream('./sounds/' + TITLE + '.' + Extension));
   console.log("Fait !")
   console.log(" ")
