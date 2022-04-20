@@ -42,8 +42,12 @@ async function AskExtenssion(URL, title) {
       DownloadY(URL, title, "mp4")
     } else if (line == "wav") {
       DownloadY(URL, title, "wav")
+    } else if (line == "m4a") {
+      DownloadY(URL, title, "m4a")
+    } else if (line == "webm") {
+      DownloadY(URL, title, "webm")
     } else {
-      console.log("Unrecognized format")
+      console.log("Extension non valide")
       AskExtenssion(URL, title)
     }
   })
