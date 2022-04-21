@@ -10,7 +10,8 @@ function DownloadY(URL, TITLE, Extension) {
   console.log("Downloading...")
   ytdl(URL, {
     format: Extension,
-  }).pipe(fs.createWriteStream('./sounds/' + TITLE + '.' + Extension));
+    quality: "highestaudio",
+  }).pipe(fs.createWriteStream('./videos/' + TITLE + '.' + Extension));
   console.log("Fait !")
   console.log(" ")
   AskUrl()
