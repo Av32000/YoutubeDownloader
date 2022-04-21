@@ -24,11 +24,11 @@ All libraries are included in node_modules
 
 4. Choose the file name
 
-5. Select an [extension](#extension)
+5. Select an [extension](#supported-extensions-)
 
 6. The video is downloaded in the videos folder
 
-# <a name="extensions"></A>Supported Extensions :
+# <a name="extensions"></a>Supported Extensions :
 
 - mp4
 - webm
