@@ -39,6 +39,23 @@
       padding: 5px;
       margin: 5px;
     }
+    p{
+      color: grey;
+    }
+    a{
+      color: aquamarine;
+      text-decoration: none;
+    }
+    .footer{
+      position:absolute;
+      bottom:0;  
+      width:99%;
+      height:100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-content: space-between;
+    }
   </style>
 </head>
 <body>
@@ -47,5 +64,8 @@
     <input type="url" name="url" placeholder="https://www.youtube.com/watch?v=...">
     <button id="download" type="submit">Download</button>
   </form>
+  <div class="footer">
+    <p>Open source project : <a href="https://github.com/Av32000/YoutubeDownloader">Github</a></p>
+  </div>
 </body>
 </html>
