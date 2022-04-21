@@ -4,11 +4,18 @@ const path = require('path');
 const fs = require("fs");
 
 const app = express();
+
+app.use(express.static(__dirname + '/src'));
+
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'))
 });
+
+app.post("/icon", (req, res) => {
+  fs.createReadStream("./src/icon.png").pipe(res);
+})
 
 app.post('/youtube', (req, res) => {
   const url = req.body.url;
