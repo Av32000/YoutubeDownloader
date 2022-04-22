@@ -10,8 +10,8 @@ app.use(express.static(__dirname + '/src'));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-  //res.sendFile(path.join(__dirname, 'index.html'))
-  res.redirect("https://ytdl-download.000webhostapp.com/index.html")
+  res.sendFile(path.join(__dirname, 'index.html'))
+  //res.redirect("https://ytdl-download.000webhostapp.com/index.html")
 });
 
 app.post("/icon", (req, res) => {
