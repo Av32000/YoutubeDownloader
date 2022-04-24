@@ -28,7 +28,7 @@ All libraries are included in node_modules
 
 6. The video is downloaded in the videos folder
 
-# <a name="extensions"></a>Supported Extensions :
+# <a name="extensions"></a>Supported Extensions
 
 - mp4
 - webm
