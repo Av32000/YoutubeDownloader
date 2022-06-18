@@ -16,17 +16,15 @@ All libraries are included in node_modules
 
 # Using index.js
 
-1. Create a folder named *videos*
+1. Execute the following command =>``node index.js``
 
-2. Execute the following command =>``node index.js``
+2. Enter the url of the video
 
-3. Enter the url of the video
+3. Choose the file name
 
-4. Choose the file name
+4. Select an [extension](#supported-extensions-)
 
-5. Select an [extension](#supported-extensions-)
-
-6. The video is downloaded in the videos folder
+5. The video is downloaded in the videos folder
 
 # <a name="extensions"></a>Supported Extensions
 
