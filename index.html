@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Youtube Downloader</title>
-  <link rel="icon" href="http://176.169.154.181/icon.png">
+  <link rel="icon" href="/icon">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1240323003890092"
      crossorigin="anonymous"></script>
   <style>
@@ -15,10 +15,6 @@
       box-sizing: border-box;
       font-family: Arial, Helvetica, sans-serif;
     }   
-
-    .disclaimer{
-      display: none;
-    }
 
     form{
       display: flex;
@@ -66,8 +62,8 @@
   </style>
 </head>
 <body>
-  <form action="http://176.169.154.181/youtube" method="post">
-    <img src="http://176.169.154.181/icon.png" alt="icon" width="150px" height="150px" id="logo">
+  <form action="/youtube" method="post">
+    <img src="/icon" alt="icon" width="150px" height="150px" id="logo">
     <h1>Youtube Downloader</h1>
     <input type="url" name="url" placeholder="https://www.youtube.com/watch?v=...">
     <button id="download" type="submit">Download</button>
@@ -75,15 +71,5 @@
   <div class="footer">
     <p>Open source project : <a href="https://github.com/Av32000/YoutubeDownloader">Github</a></p>
   </div>
-
-  <script>
-    if(window.location.href.startsWith("https")){
-      document.getElementById("logo").src = "./src/icon.png";
-      console.log(document.getElementById("logo").src)
-    }else{
-      document.querySelector("logo").src = "http://176.169.154.181/icon.png";
-      console.log(document.getElementById("logo").src)
-    }
-  </script>
 </body>
 </html>

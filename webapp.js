@@ -2,25 +2,23 @@ const ytdl = require('ytdl-core');
 const express = require('express');
 const path = require('path');
 const fs = require("fs");
+const { pathToFileURL } = require('url');
 
 const app = express();
 
 app.use(express.static(__dirname + '/src'));
-app.use(express.static(__dirname + '/videos'));
-
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'))
-  //res.redirect("https://ytdl-download.000webhostapp.com/index.html")
 });
 
-app.post("/icon", (req, res) => {
-  fs.createReadStream("./src/icon.png").pipe(res);
+app.get("/icon", (req, res) => {
+  res.sendFile(path.join(__dirname, '/src/icon.png'))
 })
 
 app.post('/youtube', (req, res) => {
-  const url = req.body.url;
+  const url = req.body.url
   if (!url) {
     res.send('No url provided');
     return;
@@ -28,8 +26,7 @@ app.post('/youtube', (req, res) => {
   try {
     ytdl.getBasicInfo(url).then(async info => {
       const title = info.videoDetails.title;
-      res.header('Content-Disposition', 'attachment; filename=' + title + '.mp4');
-
+      res.attachment(title + ".mp4");
       await ytdl(url, {
         format: "mp4",
         quality: "highestaudio",
@@ -37,6 +34,7 @@ app.post('/youtube', (req, res) => {
 
     }).catch(err => { res.send(err) });
   } catch (error) {
+    console.log(error);
     res.send(error);
   }
 });
@@ -65,7 +63,7 @@ app.post('/youtubeapp', (req, res) => {
   }
 });
 
-app.listen(8082, () => {
-  console.log('Server started on port 8082');
+app.listen(8080, () => {
+  console.log('Server started on port 8080');
 });
 
