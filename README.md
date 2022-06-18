@@ -38,8 +38,6 @@ All libraries are included in node_modules
 
 # Using webapp.js
 
-1. Create a folder named *videos*
+1. Execute the following command => ``node webapp.js``
 
-2. Execute the following command => ``node webapp.js``
-
-3. Open the browser and go to http://localhost:8082/
+2. Open the browser and go to http://localhost:8080/
