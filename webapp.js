@@ -2,7 +2,6 @@ const ytdl = require('ytdl-core');
 const express = require('express');
 const path = require('path');
 const fs = require("fs");
-const { pathToFileURL } = require('url');
 
 const app = express();
 
