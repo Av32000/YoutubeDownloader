@@ -18,16 +18,21 @@ app.get("/icon", (req, res) => {
 
 app.post('/youtube', (req, res) => {
   const url = req.body.url
+  const format = req.body.format
   if (!url) {
     res.send('No url provided');
+    return;
+  }
+  if (!format) {
+    res.send('No format provided');
     return;
   }
   try {
     ytdl.getBasicInfo(url).then(async info => {
       const title = info.videoDetails.title;
-      res.attachment(title + ".mp4");
+      res.attachment(title + "." + format);
       await ytdl(url, {
-        format: "mp4",
+        format: format,
         quality: "highestaudio",
       }).pipe(res);
 
