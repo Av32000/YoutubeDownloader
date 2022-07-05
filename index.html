@@ -1,75 +1,115 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Youtube Downloader</title>
-  <link rel="icon" href="/icon">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1240323003890092"
-     crossorigin="anonymous"></script>
-  <style>
-    body{
-      background-color: rgb(32, 32, 32);
-      color: aquamarine;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }   
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Youtube Downloader</title>
 
-    form{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-    }
+		<meta property="og:title" content="YoutubeDownloader" />
+		<meta property="og:type" content="website" />
+		<meta
+			property="og:description"
+			content="Allows you to simply and quickly download any youtube video using a simple url by choosing between .mp3 and .mp4 files"
+		/>
+		<meta
+			property="og:url"
+			content="https://youtubedownloader.av32000.repl.co"
+		/>
+		<meta
+			property="og:image"
+			content="https://youtubedownloader.av32000.repl.co/icon"
+		/>
 
-    input{
-      background-color: rgb(32, 32, 32);
-      color: aquamarine;
-      border: 1px solid gray;
-      border-radius: 5px;
-      padding: 5px;
-      margin: 5px;
-    }
+		<meta property="twitter:title" content="YoutubeDownloader" />
+		<meta
+			property="twitter:url"
+			content="https://youtubedownloader.av32000.repl.co/"
+		/>
+		<meta
+			property="twitter:description"
+			content="Allows you to simply and quickly download any youtube video using a simple url by choosing between .mp3 and .mp4 files"
+		/>
+		<meta
+			property="twitter:image"
+			content="https://youtubedownloader.av32000.repl.co/icon"
+		/>
 
-    button{
-      background-color: rgb(32, 32, 32);
-      color: aquamarine;
-      border: 1px solid gray;
-      border-radius: 5px;
-      padding: 5px;
-      margin: 5px;
-    }
-    p{
-      color: grey;
-    }
-    a{
-      color: aquamarine;
-      text-decoration: none;
-    }
-    .footer{
-      position:absolute;
-      bottom:0;  
-      width:99%;
-      height:100px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      align-content: space-between;
-    }
-  </style>
-</head>
-<body>
-  <form action="/youtube" method="post">
-    <img src="/icon" alt="icon" width="150px" height="150px" id="logo">
-    <h1>Youtube Downloader</h1>
-    <input type="url" name="url" placeholder="https://www.youtube.com/watch?v=...">
-    <button id="download" type="submit">Download</button>
-  </form>
-  <div class="footer">
-    <p>Open source project : <a href="https://github.com/Av32000/YoutubeDownloader">Github</a></p>
-  </div>
-</body>
+		<link rel="icon" href="/icon" />
+		<script
+			async
+			src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1240323003890092"
+			crossorigin="anonymous"
+		></script>
+		<style>
+			body {
+				background-color: rgb(32, 32, 32);
+				color: aquamarine;
+				box-sizing: border-box;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+
+			form {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				height: 100%;
+			}
+
+			input {
+				background-color: rgb(32, 32, 32);
+				color: aquamarine;
+				border: 1px solid gray;
+				border-radius: 5px;
+				padding: 5px;
+				margin: 5px;
+			}
+
+			button {
+				background-color: rgb(32, 32, 32);
+				color: aquamarine;
+				border: 1px solid gray;
+				border-radius: 5px;
+				padding: 5px;
+				margin: 5px;
+			}
+			p {
+				color: grey;
+			}
+			a {
+				color: aquamarine;
+				text-decoration: none;
+			}
+			.footer {
+				position: absolute;
+				bottom: 0;
+				width: 99%;
+				height: 100px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				align-content: space-between;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="/youtube" method="post">
+			<img src="/icon" alt="icon" width="150px" height="150px" id="logo" />
+			<h1>Youtube Downloader</h1>
+			<input
+				type="url"
+				name="url"
+				placeholder="https://www.youtube.com/watch?v=..."
+			/>
+			<button id="download" type="submit">Download</button>
+		</form>
+		<div class="footer">
+			<p>
+				Open source project :
+				<a href="https://github.com/Av32000/YoutubeDownloader">Github</a>
+			</p>
+		</div>
+	</body>
 </html>
