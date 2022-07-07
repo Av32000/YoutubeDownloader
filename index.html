@@ -36,11 +36,6 @@
 		/>
 
 		<link rel="icon" href="/icon" />
-		<script
-			async
-			src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1240323003890092"
-			crossorigin="anonymous"
-		></script>
 		<style>
 			body {
 				background-color: rgb(32, 32, 32);
@@ -89,6 +84,7 @@
 				color: aquamarine;
 				border: 1px solid gray;
 				border-radius: 5px;
+				cursor: pointer;
 				padding: 5px;
 				margin: 5px;
 			}
@@ -109,17 +105,43 @@
 				justify-content: center;
 				align-content: space-between;
 			}
+
+			.inputs{
+				padding: 0px;
+			}
+
+			.inputs p{
+				cursor: pointer;
+			}
+
+			.inputs p:hover{
+				color: red;
+			}
+
+			.inputs input{
+				cursor: text;
+			}
 		</style>
 	</head>
 	<body>
+		<script>
+			function Clear (){
+				let textBox = document.getElementById("url");
+				textBox.value = "";
+			}
+		</script>
 		<form action="/youtube" method="post">
 			<img src="/icon" alt="icon" width="150px" height="150px" id="logo" />
 			<h1>Youtube Downloader</h1>
-			<input
-				type="url"
-				name="url"
-				placeholder="https://www.youtube.com/watch?v=..."
-			/>
+			<div class="inputs">
+				<input
+					id="url"
+					type="url"
+					name="url"
+					placeholder="https://www.youtube.com/watch?v=..."
+				/>
+				<p onclick="Clear()">X</p>
+			</div>
       <div>
         <input type="radio" name="format" value="mp3" checked>MP3</Input>
         <input type="radio" name="format" value="mp4">MP4</Input>
