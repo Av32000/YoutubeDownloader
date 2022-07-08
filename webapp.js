@@ -31,6 +31,7 @@ app.post('/youtube', (req, res) => {
     ytdl.getBasicInfo(url).then(async info => {
       const title = info.videoDetails.title;
       res.attachment(title + "." + format);
+      console.log(req.ip + " : " + title + "." + format + " downloaded")
       await ytdl(url, {
         format: format,
         quality: "highestaudio",
