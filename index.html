@@ -42,6 +42,10 @@
 				color: aquamarine;
 				box-sizing: border-box;
 				font-family: Arial, Helvetica, sans-serif;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
 			}
 
 			form {
@@ -96,7 +100,6 @@
 				text-decoration: none;
 			}
 			.footer {
-				position: absolute;
 				bottom: 0;
 				width: 99%;
 				height: 100px;
@@ -121,6 +124,10 @@
 			.inputs input{
 				cursor: text;
 			}
+
+			iframe{
+				padding: 10px;
+			}
 		</style>
 	</head>
 	<body>
@@ -128,6 +135,12 @@
 			function Clear (){
 				let textBox = document.getElementById("url");
 				textBox.value = "";
+			}
+			function SetURL(){
+				let textBox = document.getElementById("url");
+				document.getElementById("iframe").src = textBox.value;
+				document.getElementById("iframe").hidden = false;
+				document.getElementById("footer").style.position = "";
 			}
 		</script>
 		<form action="/youtube" method="post">
@@ -146,13 +159,15 @@
         <input type="radio" name="format" value="mp3" checked>MP3</Input>
         <input type="radio" name="format" value="mp4">MP4</Input>
       </div>
-			<button id="download" type="submit">Download</button>
+			<button id="download" type="submit" onclick="SetURL()">Download</button>
+			<iframe width="560" height="315" src="https://youtube.com" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" id="iframe" allowfullscreen></iframe>
 		</form>
-		<div class="footer">
+		<div class="footer" id="footer">
 			<p>
 				Open source project :
 				<a href="https://github.com/Av32000/YoutubeDownloader">Github</a>
 			</p>
 		</div>
+		<script>document.getElementById("iframe").hidden = true;document.getElementById("footer").style.position = "absolute";</script>
 	</body>
 </html>
