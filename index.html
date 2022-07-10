@@ -145,7 +145,7 @@
 			}
 			function SetURL(){
 				let textBox = document.getElementById("url");
-				document.getElementById("iframe").src = textBox.value;
+				document.getElementById("iframe").src = "https://www.youtube.com/embed/" + textBox.value.split("https://www.youtube.com/watch?v=")[1];
 				document.getElementById("iframe").hidden = false;
 				document.getElementById("footer").style.position = "";
 			}
