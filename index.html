@@ -34,114 +34,17 @@
 			property="twitter:image"
 			content="https://youtubedownloader.av32000.repl.co/icon"
 		/>
-
+		<link rel="stylesheet" href="index.css">
 		<link rel="icon" href="/icon" />
-		<style>
-			body {
-				background-color: rgb(32, 32, 32);
-				color: aquamarine;
-				box-sizing: border-box;
-				font-family: Arial, Helvetica, sans-serif;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-			}
-
-			form {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-				width: 100%;
-				height: 100%;
-			}
-
-      form div{
-        padding-top: 15px;
-        padding-bottom: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-      }
-
-      form div input{
-        margin: 10px;
-        cursor: pointer;
-        position: relative;
-        accent-color: aquamarine;
-      }
-
-			input {
-				background-color: rgb(32, 32, 32);
-				color: aquamarine;
-				border: 1px solid gray;
-				border-radius: 5px;
-				padding: 5px;
-				margin: 5px;
-			}
-
-			button {
-				background-color: rgb(32, 32, 32);
-				color: aquamarine;
-				border: 1px solid gray;
-				border-radius: 5px;
-				cursor: pointer;
-				padding: 5px;
-				margin: 5px;
-			}
-			p {
-				color: grey;
-			}
-			a {
-				color: aquamarine;
-				text-decoration: none;
-			}
-			.footer {
-				bottom: 0;
-				width: 99%;
-				height: 100px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				align-content: space-between;
-			}
-
-			.inputs{
-				padding: 0px;
-			}
-
-			.inputs p{
-				cursor: pointer;
-			}
-
-			.inputs p:hover{
-				color: red;
-			}
-
-			.inputs input{
-				cursor: text;
-			}
-
-			iframe{
-				padding: 10px;
-			}
-			@media screen
-  			and (max-device-width: 480px)
-  			and (orientation: portrait){
-   		 iframe{
-     		width: 100%;
-    	}
-}	
-		</style>
 	</head>
 	<body>
 		<script>
 			function Clear (){
 				let textBox = document.getElementById("url");
 				textBox.value = "";
+				document.getElementById("iframe").src = ""
+				document.getElementById("iframe").hidden = true;
+				document.getElementById("footer").style.position = "absolute";
 			}
 			function SetURL(){
 				let textBox = document.getElementById("url");
