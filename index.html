@@ -34,26 +34,124 @@
 			property="twitter:image"
 			content="https://youtubedownloader.av32000.repl.co/icon"
 		/>
-		<link rel="stylesheet" href="index.css">
+		<link rel="stylesheet" href="index.css" />
 		<link rel="icon" href="/icon" />
 	</head>
 	<body>
 		<script>
-			function Clear (){
-				let textBox = document.getElementById("url");
-				textBox.value = "";
-				document.getElementById("iframe").src = ""
-				document.getElementById("iframe").hidden = true;
-				document.getElementById("footer").style.position = "absolute";
+			function Clear() {
+				let textBox = document.getElementById('url');
+				textBox.value = '';
+				document.getElementById('iframe').src = '';
+				document.getElementById('iframe').hidden = true;
+				document.getElementById('playlist').innerHTML = '';
 			}
-			function SetURL(){
-				let textBox = document.getElementById("url");
-				document.getElementById("iframe").src = "https://www.youtube.com/embed/" + textBox.value.split("https://www.youtube.com/watch?v=")[1];
-				document.getElementById("iframe").hidden = false;
-				document.getElementById("footer").style.position = "";
+			function SetURL() {
+				let textBox = document.getElementById('url');
+				if (textBox.value.includes('watch')) {
+					document.getElementById('iframe').src =
+						'https://www.youtube.com/embed/' +
+						textBox.value.split('https://www.youtube.com/watch?v=')[1];
+					document.getElementById('iframe').hidden = false;
+				}
+			}
+			function Submit() {
+				const url = document.getElementById('url').value;
+				const form = document.getElementById('form');
+				if (url.includes('watch')) form.submit();
+				else if (url.includes('playlist')) {
+					let formData = new FormData();
+					formData.append('url', url);
+					fetch('/getPlaylist', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({
+							url: url,
+						}),
+					}).then(res => {
+						res.json().then(data => {
+							const playlist = document.getElementById('playlist');
+
+							let title = document.createElement('h1');
+							title.innerHTML = 'Playlist';
+							title.style.color = 'white';
+							playlist.appendChild(title);
+
+							let button = document.createElement('button');
+							button.innerHTML = 'Download ' + data.title;
+							button.className = 'download-all';
+							button.onclick = () => {
+								button.innerHTML = 'Loading...';
+								let form = document.createElement('form');
+								form.action = '/playlist';
+								form.method = 'POST';
+								form.style.display = 'none';
+
+								let input = document.createElement('input');
+								input.value = data.id;
+								input.name = 'id';
+								form.appendChild(input);
+
+								document.body.appendChild(form);
+								form.submit();
+								document.body.removeChild(form);
+							};
+							playlist.appendChild(button);
+
+							data.videos.forEach(video =>
+								playlist.appendChild(VideoCard(video)),
+							);
+						});
+					});
+				}
+			}
+			function VideoCard(video) {
+				let card = document.createElement('div');
+				card.className = 'video-card';
+
+				let data = document.createElement('div');
+				data.className = 'video-data';
+
+				let icon = document.createElement('img');
+				icon.src = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
+				card.appendChild(icon);
+
+				let title = document.createElement('p');
+				title.className = 'video-title';
+				title.innerHTML = video.title;
+				data.appendChild(title);
+
+				let author = document.createElement('p');
+				author.className = 'video-author';
+				author.innerHTML = video.author;
+				data.appendChild(author);
+
+				let button = document.createElement('button');
+				button.innerHTML = 'Download';
+				button.onclick = () => {
+					let form = document.createElement('form');
+					form.action = '/youtube';
+					form.method = 'POST';
+					form.style.display = 'none';
+
+					let input = document.createElement('input');
+					input.value = 'https://youtube.com/watch?v=' + video.id;
+					input.name = 'url';
+					form.appendChild(input);
+
+					document.body.appendChild(form);
+					form.submit();
+					document.body.removeChild(form);
+				};
+				data.appendChild(button);
+				card.appendChild(data);
+
+				return card;
 			}
 		</script>
-		<form action="/youtube" method="post">
+		<form action="/youtube" method="post" id="form">
 			<img src="/icon" alt="icon" width="150px" height="150px" id="logo" />
 			<h1>Youtube Downloader</h1>
 			<div class="inputs">
@@ -61,21 +159,33 @@
 					id="url"
 					type="url"
 					name="url"
+					onchange="SetURL()"
 					placeholder="https://www.youtube.com/watch?v=..."
 				/>
 				<p onclick="Clear()">X</p>
 			</div>
-      <div>
-      </div>
-			<button id="download" type="submit" onclick="SetURL()">Download</button>
-			<iframe width="560" height="315" src="https://youtube.com" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" id="iframe" allowfullscreen></iframe>
+			<div></div>
+			<button id="download" type="button" onclick="Submit()">Download</button>
+			<iframe
+				width="560"
+				height="315"
+				src="https://youtube.com"
+				title="YouTube video player"
+				frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+				id="iframe"
+				allowfullscreen
+			></iframe>
 		</form>
+		<div id="playlist"></div>
 		<div class="footer" id="footer">
 			<p>
 				Open source project :
 				<a href="https://github.com/Av32000/YoutubeDownloader">Github</a>
 			</p>
 		</div>
-		<script>document.getElementById("iframe").hidden = true;document.getElementById("footer").style.position = "absolute";</script>
+		<script>
+			document.getElementById('iframe').hidden = true;
+		</script>
 	</body>
 </html>
